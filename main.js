@@ -1,7 +1,23 @@
 let lista = document.getElementById("lista");
 let totalText = document.getElementById("totalText");
 let botonFin = document.getElementById("boton-fin");
+let menuToggle = document.getElementById("menu-toggle");
+let header = document.getElementById("header");
 let total = 0;
+
+menuToggle.addEventListener("click", () => {
+    let menuAbierto = header.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", menuAbierto);
+    menuToggle.setAttribute("aria-label", menuAbierto ? "Cerrar menú" : "Abrir menú");
+});
+
+document.querySelectorAll("#navbar a").forEach((enlace) => {
+    enlace.addEventListener("click", () => {
+        header.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Abrir menú");
+    });
+});
 
 const productos = [
     {imgSrc: "img/zapas/zapa1.png", nombre: "Nike Dunk Hi Retro", precio: 100000, stock: 3 },
@@ -20,9 +36,9 @@ function pintarProductos(arrayProductos) {
                 <img src="${arrayProductos[i].imgSrc}" alt="">
                 <p class="nombre">${arrayProductos[i].nombre}</p>
                 <p class="precio">$${arrayProductos[i].precio}</p>
-                <input type="number" id="stock${i}" value="${arrayProductos[i].stock}" readonly >
-                <input type="number" id="cantidad${i}" placeholder="Cant." >
-                <button id="btn${i}">AGREGAR</button>
+                <input class="stock" type="number" id="stock${i}" value="${arrayProductos[i].stock}" readonly >
+                <input class="cantidad" type="number" id="cantidad${i}" placeholder="Cant." min="1" >
+                <button class="agregar" id="btn${i}">AGREGAR</button>
         
             </div>
            `
@@ -45,7 +61,7 @@ function comprar(index, arrayProductos) {
 
     if(cantidad > 0 && cantidad <= stock){
         total += cantidad * precio;
-        alert("Compra exitosa!. Total $" + total) ;
+        alert("Agregado exitosamente!. Total $" + total) ;
         totalText.innerHTML = `Total: $${total}`
         stockElement.value = stock - cantidad;
     } else {
@@ -58,6 +74,12 @@ pintarProductos(productos);
 
 
 botonFin.addEventListener("click", () => {
+    if (total === 0) {
+        alert("Seleccione algun producto para poder realizar la compra");
+        return;
+    }
+
     alert("Gracias por su compra 😊!!");
+    total = 0;
     totalText.innerHTML = "Total: $0 👟";
 });

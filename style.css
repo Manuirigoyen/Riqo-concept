@@ -4,19 +4,25 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+body{
+    overflow-x: hidden;
+}
+
 #logo{
     padding: 0;
     margin: 0;
-    width: 10%;
-    height: 10%;
+    width: clamp(72px, 10vw, 120px);
+    height: auto;
 }
 
 #header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4px 80px;
+    padding: 4px clamp(16px, 5vw, 80px);
     background: white;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
     z-index: 999;
@@ -24,6 +30,27 @@
     top: 0;
     left: 0;
 
+}
+
+#menu-toggle{
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 1px solid #ead8d5;
+    border-radius: 10px;
+    background: #fffaf9;
+    cursor: pointer;
+}
+
+#menu-toggle span{
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 4px 0;
+    border-radius: 2px;
+    background: #7f2f25;
+    transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
 #navbar{
@@ -37,7 +64,7 @@
     list-style: none;
     padding: 0 20px;
     position: relative;
-    font-size: 1.2vw;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
 }
 
 #navbar li a{
@@ -66,26 +93,28 @@
 #hero{
     width: 100%;
     background-image: url(/img/hero/fondoinicio.png);
-    padding: 2%;
-    padding-left: 14%;
+    min-height: clamp(360px, 42vw, 560px);
+    padding: clamp(32px, 5vw, 70px) clamp(24px, 14vw, 180px);
+    background-position: center;
+    background-size: cover;
     position: static;
 }
 
 #hero h3{
-    font-size: 2.6vw;
-    line-height: 54px;
+    font-size: clamp(1.7rem, 2.6vw, 2.7rem);
+    line-height: 1.15;
     color: #E1493B;
     text-shadow: 2px 2px 1px black;
 }
 
 #hero h4{
-    font-size: 3vw;
+    font-size: clamp(2rem, 3vw, 3.1rem);
     color: #C0221B;
     text-shadow: 2px 2px 1px black;
 }
 
 #hero p{
-    font-size: 1.7vw;
+    font-size: clamp(1rem, 1.7vw, 1.5rem);
     color: white;
     margin: 15px 0 20px 0;
     text-shadow: 2px 2px 1px black;
@@ -100,31 +129,32 @@
     border: 0;
     padding: 35px 40px 30px 25px;
     cursor: pointer;
-    font-size: 1.2vw;
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
 }
 
 #feature{
-    margin: 2%;
-    display: flex;
+    margin: clamp(20px, 2vw, 32px);
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     align-items: center;
-    justify-content: space-between;
+    gap: 12px;
 }
 
 #feature .box{
-    width: 15%;
+    width: 100%;
     text-align: center;
     padding: 2% 2%;
     box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
     border: 1px solid #cce7d0;
     border-radius: 4px;
-    margin: 1%;
+    margin: 0;
 }
 
 #feature .box h5{
     display: inline-block;
     padding: 6% 3% 3% 3%;
     color: black;
-    font-size: 1.1vw;
+    font-size: clamp(0.75rem, 1.1vw, 1rem);
 }
 
 #feature img{
@@ -134,10 +164,13 @@
 
 #lista{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    padding: 0 clamp(12px, 2vw, 32px);
 }
 .forma{
-    margin: 10px;
+    margin: 0;
+    padding: 12px;
     text-align: center;
     border: 1px solid black;
     border-radius: 22px;
@@ -151,164 +184,98 @@
     font-family: 'League Spartan', sans-serif;
     font-weight: bold;
     color: red;
-    font-size: 1.2vw;
+    font-size: clamp(0.95rem, 1.2vw, 1.2rem);
 }
 .precio{
     margin: 10px;
     font-family: 'League Spartan', sans-serif;
     font-weight: bold;
-    font-size: 1.4vw;
+    font-size: clamp(1rem, 1.4vw, 1.35rem);
 }
 .forma img{
-    width: 40%;
-    height: 60%;
+    width: min(70%, 180px);
+    height: auto;
 }
-#stock0{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#stock1{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#stock2{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#stock3{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#stock4{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#stock5{
-    width: 6%;
-    font-size: 1.0vw;
-}
-#cantidad0{
-    width: 11%;
-    font-size: 1.0vw;
-}
-#cantidad1{
-    width: 11%;
-    font-size: 1.0vw;
-}
-#cantidad2{
-    width: 11%;
-    font-size: 1.0vw;
-}
-#cantidad3{
-    width: 11%;
-    font-size: 1.0vw;
-}
-#cantidad4{
-    width: 11%;
-    font-size: 1.0vw;
-}
-#cantidad5{
-    width: 11%;
-    font-size: 1.0vw;
+.stock,
+.cantidad,
+.agregar{
+    vertical-align: middle;
 }
 
-#btn0{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
-    background-color: brown;
-    color: white;
-    border: 1px solid black;
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn0:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 8px black;
-}
-
-#btn1{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
-    background-color: brown;
-    color: white;
-    border: 1px solid black;
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn1:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 8px black;
-}
-#btn2{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
-    background-color: brown;
-    color: white;
-    border: 1px solid black;
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn2:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 8px black;
-}
-#btn3{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
-    background-color: brown;
-    color: white;
-    border: 1px solid black;
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn3:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 8px black;
-}
-#btn4{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
-    background-color: brown;
-    color: white;
-    border: 1px solid black;
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn4:hover{
-    cursor: pointer;
-    box-shadow: 1px 1px 8px black;
+.stock{
+    width: 2.2rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #666;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    appearance: textfield;
+    pointer-events: none;
 }
 
-#btn5{
-    width: 22%;
-    height: 10%;
-    border-radius: 50px;
+.stock::-webkit-inner-spin-button,
+.stock::-webkit-outer-spin-button{
+    appearance: none;
+}
+
+.cantidad{
+    width: 4.5rem;
+    height: 2rem;
+    margin: 0 0.35rem;
+    padding: 0 0.45rem;
+    border: 1px solid #d7d7d7;
+    border-radius: 8px;
+    background: #fff;
+    color: #333;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 0.9rem;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cantidad::placeholder{
+    color: #999;
+}
+
+.cantidad:focus{
+    border-color: #b35b4c;
+    box-shadow: 0 0 0 3px rgba(179, 91, 76, 0.15);
+}
+
+.agregar{
+    width: auto;
+    min-height: 2rem;
+    padding: 0.35rem 0.8rem;
+    border: 1px solid #7f2f25;
+    border-radius: 999px;
     background-color: brown;
     color: white;
-    border: 1px solid black; 
-    font-size: 1.1vw;
-    margin-left: 4%;
-}
-#btn5:hover{
+    font-size: clamp(0.7rem, 1.1vw, 0.95rem);
+    font-weight: 600;
     cursor: pointer;
-    box-shadow: 1px 1px 8px black;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.agregar:hover{
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
 }
 
 #totalText{
     text-align: center;
     font-family: "Rowdies", sans-serif;
-    font-size: 1.8vw;
+    font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+    margin: 24px 12px;
 }
 #contenedorBtn{
     text-align: center;
 }
 #boton-fin{
-    width: 22%;
+    width: min(320px, 90%);
     height: 40px;
     border-radius: 50px;
     background-color: white;
@@ -317,10 +284,164 @@
     font-weight: bold;
     font-size: 1.2em;
     box-shadow: 8px 8px 20px black;
-    font-size: 1.8vw;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    margin-bottom: 24px;
 }
 
 #boton-fin:hover{
         cursor: pointer;
         box-shadow: none;
+}
+
+@media (max-width: 760px){
+    #header{
+        position: sticky;
+        padding: 8px 16px;
+    }
+
+    #menu-toggle{
+        display: block;
+        margin-left: auto;
+    }
+
+    #header > div{
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 16px;
+        left: 16px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-8px);
+        transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    }
+
+    #header.menu-open > div{
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #header.menu-open #menu-toggle span:nth-child(1){
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    #header.menu-open #menu-toggle span:nth-child(2){
+        opacity: 0;
+    }
+
+    #header.menu-open #menu-toggle span:nth-child(3){
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    #navbar{
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding: 10px;
+        border: 1px solid #ead8d5;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 12px 25px rgba(73, 32, 26, 0.16);
+    }
+
+    #navbar li{
+        padding: 0;
+        font-size: 0.9rem;
+    }
+
+    #navbar li a{
+        display: block;
+        padding: 11px 12px;
+        border-radius: 8px;
+    }
+
+    #navbar li a:hover,
+    #navbar li a#active{
+        background: #fff0ed;
+    }
+
+    #navbar li a#active::after,
+    #navbar li a:hover::after{
+        display: none;
+    }
+
+    #feature{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #feature .box{
+        padding: 10px 6px;
+    }
+
+    #feature img{
+        width: 70%;
+    }
+
+    #lista{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .forma{
+        padding: 8px 5px;
+    }
+
+    .forma input{
+        width: 28%;
+        min-height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .forma button{
+        width: 42%;
+        min-height: 30px;
+        margin-left: 2%;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 430px){
+    #header{
+        align-items: flex-start;
+    }
+
+    #logo{
+        width: 64px;
+    }
+
+    #navbar{
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        row-gap: 5px;
+    }
+
+    #navbar li{
+        padding: 0 4px;
+        font-size: 0.68rem;
+    }
+
+    #hero{
+        min-height: 390px;
+        padding: 38px 22px;
+    }
+
+    #hero button{
+        padding: 28px 30px 24px 20px;
+    }
+
+    #feature{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #lista{
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin: 0 auto;
+    }
+
+    .forma img{
+        width: min(55%, 150px);
+    }
 }
